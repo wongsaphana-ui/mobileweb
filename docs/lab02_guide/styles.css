@@ -1,0 +1,129 @@
+/* KKU Campus Guide - styles.css */
+/* Box model reset */
+*, *::before, *::after { box-sizing: border-box; }
+:root{
+  --max-width: 1100px;
+  --gap: 1rem;
+  --accent: #2e6da4;
+  --muted: #666;
+  --bg: #f7f9fb;
+}
+html,body{height:100%;}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial;
+  color:#111;
+  background:var(--bg);
+  line-height:1.5;
+}
+.container{max-width:var(--max-width);margin:0 auto;padding:1rem;}
+
+/* Header */
+.site-header{background:#fff;border-bottom:1px solid #e6eef6;}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--gap);padding:1rem 0;}
+.site-header h1{margin:0;font-size:1.25rem;color:var(--accent);}
+.main-nav a{margin-left:0.75rem;color:var(--accent);text-decoration:none;font-weight:600}
+
+/* Intro */
+.intro{background:#fff;padding:1rem;border-radius:8px;margin:1rem 0;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+
+/* Layout: places + contact aside */
+.places{display:grid;grid-template-columns:1fr;gap:1rem;margin:1rem 0}
+.place{background:#fff;padding:1rem;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+.place h3{margin-top:0}
+.place .desc{color:var(--muted);margin-bottom:0.75rem}
+
+.images{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem}
+.images img{width:100%;height:220px;object-fit:cover;border-radius:6px;display:block}
+
+/* Contact aside - styled as card */
+.contact{background:#fff;padding:1rem;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,0.04);margin:1rem 0}
+.contact-form{display:flex;flex-direction:column;gap:0.5rem}
+.contact-form label{font-weight:600;font-size:0.95rem}
+.contact-form input,
+.contact-form textarea,
+.contact-form select{padding:0.6rem;border:1px solid #d6e4f2;border-radius:6px;font-size:0.95rem}
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus{outline:2px solid rgba(46,109,164,0.15);border-color:var(--accent)}
+.form-actions{display:flex;gap:0.5rem;margin-top:0.5rem}
+.form-actions button{padding:0.6rem 1rem;border-radius:6px;border:0;cursor:pointer}
+.form-actions button[type="submit"]{background:var(--accent);color:#fff}
+.btn-secondary{background:#f1f5f9;color:#333}
+
+/* About */
+.about{background:#fff;padding:1rem;border-radius:8px;margin:1rem 0}
+
+/* Footer */
+.site-footer{padding:1rem 0;text-align:center;color:var(--muted);font-size:0.9rem}
+
+/* Responsive layout: wider screens show two-column layout with a sticky contact aside */
+@media (min-width:900px){
+  main.container{display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;align-items:start}
+  .places{grid-column:1 / 2}
+  .contact{grid-column:2 / 3;position:sticky;top:1rem}
+  .images img{height:180px}
+}
+
+/* For very small screens tweak image heights and spacing */
+@media (max-width:420px){
+  .images img{height:140px}
+  .header-inner{flex-direction:column;align-items:flex-start}
+  .main-nav a{margin-left:0;margin-right:0.5rem}
+}
+
+/* Accessibility helpers */
+a:focus{outline:3px solid rgba(46,109,164,0.18);outline-offset:2px}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0077cc;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #005fa3;
+}
+.place .btn {
+    display: inline-block;
+    margin: 20px auto 0; /* auto = จัดกลาง */
+}
+.place {
+    text-align: center; /* จัดกลางให้ปุ่มและข้อความบางส่วน */
+}
+.logo-container {
+    position: relative;
+    width: 200px;  /* ปรับขนาด container ตามรูปของคุณ */
+    height: 200px;
+}
+
+.logo {
+    position: absolute;  /* ซ้อนบนตำแหน่งเดียวกัน */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;  /* เริ่มต้นซ่อน */
+    animation: fadeAnimation 6s infinite;
+}
+
+.logo1 {
+    animation-delay: 0s;  /* เริ่มทันที */
+}
+
+.logo2 {
+    animation-delay: 3s;  /* เริ่มหลัง logo1 3 วินาที */
+}
+
+/* Animation fade in/out */
+@keyframes fadeAnimation {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    40% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 0; }
+}
